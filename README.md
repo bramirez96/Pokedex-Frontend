@@ -16,16 +16,16 @@ In this project you'll choose an api to consume. You will build an application f
 
 ## Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your team lead as collaborator on Github.
-- [ ] Clone your OWN version of the repository in your terminal.
-- [ ] CD into the project base directory `cd React-Redux-App`.
-- [ ] Run `npx create-react-app app --use-npm` to make a CRA app.
-- [ ] CD into the react app `cd app`.
-- [ ] Start up the app using `npm start`.
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [done] Create a forked copy of this project.
+- [done] Add your team lead as collaborator on Github.
+- [done] Clone your OWN version of the repository in your terminal.
+- [done] CD into the project base directory `cd React-Redux-App`.
+- [done] Run `npx create-react-app app --use-npm` to make a CRA app.
+- [done] CD into the react app `cd app`.
+- [done] Start up the app using `npm start`.
+- [done] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [done] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
+- [done] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project.
 
@@ -51,3 +51,10 @@ Once you have chosen an API to consume, build an app that makes sense for the da
 ## Stretch Problems
 
 Take the app as far as you can go! Styling, redux hooks, another API, an input to fetch data dynamically, etc. Work on it, improve it until the end of the day. If you find yourself finishing with time left to spare, jump on with your TL or fellow student to ask them what feature they think you should build next. Good luck!
+
+### My Next Steps
+
+1. implement my axios calls
+2. manage loading states
+3. style
+4. Search functionality
