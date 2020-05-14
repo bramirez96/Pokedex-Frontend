@@ -37,16 +37,13 @@ const PokemonList = (props) => {
           fetchPokemonSuccess(res.data);
         })
         .catch((err) => {
-          fetchPokemonFailure({
-            status: err.response.status,
-            message: err.response.data
-          });
+          fetchPokemonFailure(err);
         });
     }
   }, [url]);
   return (
     <StyledList>
-      {!isFetching && pokemon && (
+      { pokemon && (
         <div className="container">
           {pokemon.map((x, i) => (
             <PokemonCard key={i} pokemon={x} />
@@ -54,16 +51,17 @@ const PokemonList = (props) => {
         </div>
       )}
       {isFetching && <div className="loading">Loading your pokemon...</div>}
-      {poppedOut && <Popup />}
+      {/* {poppedOut && <Popup />} */}
     </StyledList>
   );
 };
 
 const StyledList = styled.section`
-  padding: 20px;
+margin-bottom: 5vh;
   .container {
     display: flex;
     align-content: flex-start;
+    flex-flow: row wrap;
   }
 `;
 

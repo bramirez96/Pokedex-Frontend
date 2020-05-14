@@ -16,7 +16,8 @@ export const reducer = (state = initialState, action) => {
     case FETCH_POKEMON_START:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
+        error: null
       };
     case FETCH_POKEMON_SUCCESS:
       const newPokemon = {
@@ -39,7 +40,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        error: `${action.payload.status}: ${action.payload.message}`
+        error: `${action.payload.message}`
       };
     case SET_URL:
       return {

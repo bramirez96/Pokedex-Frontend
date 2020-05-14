@@ -10146,7 +10146,7 @@ export const pokemon = [
 export const styles = {
   red: "#801",
   blue: "#35c",
-  yellow: "#fd0"
+  yellow: "#dc0"
 };
 
 export const bg = {
