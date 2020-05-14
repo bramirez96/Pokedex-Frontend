@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import styled from "styled-components";
 
-function App() {
+import { connect } from "react-redux";
+
+import Header from "./components/Header";
+import PokemonList from "./components/PokemonList";
+import Favorites from "./components/Favorites"
+
+import { bg } from "./data/";
+
+const App = (props) => {
+  useEffect(() => {}, []);
   return (
-    <div className="App">
-      hello world
-    </div>
+    <StyledApp className="App">
+      <Header />
+      <PokemonList />
+      <Favorites />
+    </StyledApp>
   );
-}
+};
 
-export default App;
+const StyledApp = styled.div`
+  background: url(${bg.grass}) no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+`;
+
+export default connect(null, {})(App);
