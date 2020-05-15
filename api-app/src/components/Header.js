@@ -58,6 +58,7 @@ const Header = (props) => {
 const StyledHeader = styled.header`
   font-family: "Ubuntu", sans-serif;
   height: 15vh;
+  min-height: 100px;
   background-color: #00000066;
   color: white;
   display: flex;
@@ -70,11 +71,14 @@ const StyledHeader = styled.header`
   span.button {
     position: absolute;
     top: 40%;
+    padding: 10px;
+    background-color: ${(props) => props.accent};
+    cursor: pointer;
     &.left {
-      left: 15px;
+      left: 20px;
     }
     &.right {
-      right: 15px;
+      right: 20px;
     }
   }
   .error {

@@ -9,9 +9,10 @@ import Favorites from "./components/Favorites";
 import Settings from "./components/Settings";
 import { favorites, settings } from "./store/actions";
 const { setFavorites } = favorites;
+const { setSettings } = settings;
 
 const App = (props) => {
-  const { favorites, setFavorites, background } = props;
+  const { favorites, setFavorites, background, accent, setSettings } = props;
   const readFavorites = () => {
     try {
       return window.localStorage.getItem("favorites")
@@ -28,13 +29,37 @@ const App = (props) => {
       console.log(e);
     }
   };
+  const readSettings = () => {
+    try {
+      return window.localStorage.getItem("pokeAppSettings")
+        ? JSON.parse(window.localStorage.getItem("pokeAppSettings"))
+        : {};
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const storeSettings = () => {
+    const mySettings = { bg: background, acc: accent };
+    try {
+      window.localStorage.setItem(
+        "pokeAppSettings",
+        JSON.stringify(mySettings)
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  };
   useEffect(() => {
     // Read in data from localStorage
     setFavorites(readFavorites());
+    setSettings(readSettings());
   }, []);
   useEffect(() => {
     storeFavorites();
   }, [favorites]);
+  useEffect(() => {
+    storeSettings();
+  }, [background, accent]);
   return (
     <StyledApp className="App" bg={background}>
       <Header />
@@ -63,8 +88,8 @@ const StyledApp = styled.div`
 
 const mapStateToProps = (state) => {
   const { favorites } = state.favorites;
-  const { background } = state.settings;
+  const { background, accent } = state.settings;
   return { favorites, background };
 };
 
-export default connect(mapStateToProps, { setFavorites })(App);
+export default connect(mapStateToProps, { setFavorites, setSettings })(App);

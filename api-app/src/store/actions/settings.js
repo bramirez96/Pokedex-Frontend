@@ -12,3 +12,9 @@ export const TOGGLE_SETTINGS = "TOGGLE_SETTINGS";
 export const openSettings = () => (dispatch) => {
   dispatch({ type: TOGGLE_SETTINGS });
 };
+
+export const SET_SETTINGS = "SET_SETTINGS";
+export const setSettings = (obj) => (dispatch) => {
+  
+  dispatch({ type: SET_SETTINGS, payload: obj });
+};

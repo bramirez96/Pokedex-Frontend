@@ -1,9 +1,9 @@
 import { bg, styles } from "../../data";
 import { settings } from "../actions";
 import { SET_ACCENT } from "../actions/settings";
-const { SET_BG, TOGGLE_SETTINGS } = settings;
+const { SET_BG, TOGGLE_SETTINGS, SET_SETTINGS } = settings;
 const initialState = {
-  background: bg.fire,
+  background: bg.black,
   accent: styles.red,
   setOpen: false,
 };
@@ -38,6 +38,14 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         setOpen: !state.setOpen,
+      };
+    case SET_SETTINGS:
+      return {
+        ...state,
+        background: action.payload.bg
+          ? action.payload.bg
+          : initialState.background,
+        accent: action.payload.acc ? action.payload.acc : initialState.accent,
       };
     default:
       return state;
