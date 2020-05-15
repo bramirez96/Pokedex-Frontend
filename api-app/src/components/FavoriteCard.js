@@ -11,17 +11,18 @@ const FavoriteCard = (props) => {
   const { name, sprites } = favorite;
   return (
     <StyledCard accent={accent}>
+      <span
+        className="close"
+        onClick={() => {
+          removeFavorite(favorite);
+        }}
+      >
+        &times;
+      </span>
       <img src={sprites.front_default} alt="" />
       <div>
         <h3>{name}</h3>
         <div className="buttons">
-          <button
-            onClick={() => {
-              removeFavorite(favorite);
-            }}
-          >
-            Remove
-          </button>
           <button
             onClick={() => {
               setUrl(name);
@@ -44,6 +45,18 @@ const StyledCard = styled.div`
   margin-bottom: 1.5vh;
   display: flex;
   flex-flow: row nowrap;
+  position: relative;
+  .close {
+    position: absolute;
+    top: 0;
+    right: 6px;
+    font-size: 1.3rem;
+    text-shadow: none;
+    cursor: pointer;
+    &:hover {
+      text-shadow: 0 0 10px black;
+    }
+  }
   img {
     max-height: 70px;
     margin-right: 10px;
@@ -56,13 +69,13 @@ const StyledCard = styled.div`
     h3 {
       font-size: 1.5rem;
       font-weight: 600;
-      margin-bottom: 10px;
       text-transform: capitalize;
+      margin: 7px 0 3px;
     }
     .buttons {
       display: flex;
       flex-flow: row nowrap;
-      justify-content: center;
+      justify-content: flex-start;
       button {
         margin-right: 5px;
         width: 50%;

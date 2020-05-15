@@ -8,7 +8,14 @@ const { addFavorite, removeFavorite } = favorites;
 const { removePokemon } = pokemonList;
 
 const PokemonCard = (props) => {
-  const { addFavorite, removeFavorite, accent, pokemon, removePokemon } = props;
+  const {
+    addFavorite,
+    removeFavorite,
+    accent,
+    pokemon,
+    removePokemon,
+    index,
+  } = props;
   const {
     name,
     id,
@@ -38,7 +45,7 @@ const PokemonCard = (props) => {
       <span
         className="close"
         onClick={() => {
-          removePokemon(pokemon);
+          removePokemon(index);
         }}
       >
         &times;

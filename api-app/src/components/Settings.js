@@ -18,73 +18,33 @@ const Settings = (props) => {
       <h2>SETTINGS</h2>
       <div>
         <h3>Set Background</h3>
-        <Button
-          color={accent}
-          onClick={() => {
-            setBG("water");
-          }}
-        >
-          Water
-        </Button>
-        <Button
-          color={accent}
-          onClick={() => {
-            setBG("grass");
-          }}
-        >
-          Grass
-        </Button>
-        <Button
-          color={accent}
-          onClick={() => {
-            setBG("fire");
-          }}
-        >
-          Fire
-        </Button>
-        <Button
-          color={accent}
-          onClick={() => {
-            setBG();
-          }}
-        >
-          Black
-        </Button>
+        {styles.bg.map((bg) => {
+          return (
+            <Button
+              color={accent}
+              onClick={() => {
+                setBG(bg.url);
+              }}
+            >
+              {bg.name}
+            </Button>
+          );
+        })}
       </div>
       <div>
         <h3>Set Accent</h3>
-        <Button
-          color={styles.red}
-          onClick={() => {
-            setAccent("red");
-          }}
-        >
-          Red
-        </Button>
-        <Button
-          color={styles.blue}
-          onClick={() => {
-            setAccent("blue");
-          }}
-        >
-          Blue
-        </Button>
-        <Button
-          color={styles.yellow}
-          onClick={() => {
-            setAccent("yellow");
-          }}
-        >
-          Yellow
-        </Button>
-        <Button
-          color="black"
-          onClick={() => {
-            setAccent("black");
-          }}
-        >
-          Black
-        </Button>
+        {styles.colors.map((color) => {
+          return (
+            <Button
+              color={color.hex}
+              onClick={() => {
+                setAccent(color.hex);
+              }}
+            >
+              {color.name}
+            </Button>
+          );
+        })}
       </div>
     </StyledSettings>
   );
@@ -126,11 +86,19 @@ const StyledSettings = styled.div`
       cursor: pointer;
       color: white;
       padding: 6px 9px;
+      box-shadow: 0 0 10px 1px black;
+      margin: 5px;
+      border: 1px solid black;
+      text-transform: capitalize;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 `;
 const Button = styled.button`
   background-color: ${(props) => props.color};
+  border: 1px solid ${(props) => props.color};
 `;
 
 const mapStateToProps = (state) => {

@@ -16,11 +16,11 @@ export const SET_URL = "SET_URL";
 export const setUrl = (id) => (dispatch) => {
   dispatch({
     type: SET_URL,
-    payload: `http://pokeapi.co/api/v2/pokemon/${id}/`,
+    payload: `http://pokeapi.co/api/v2/pokemon/${id.toLowerCase()}`,
   });
 };
 
 export const REMOVE_POKEMON = "REMOVE_POKEMON";
-export const removePokemon = (pokemon) => (dispatch) => {
-  dispatch({ type: REMOVE_POKEMON, payload: pokemon });
+export const removePokemon = (index) => (dispatch) => {
+  dispatch({ type: REMOVE_POKEMON, payload: index });
 };
