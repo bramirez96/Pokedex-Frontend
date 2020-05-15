@@ -3,20 +3,20 @@ const {
   FETCH_POKEMON_START,
   FETCH_POKEMON_SUCCESS,
   FETCH_POKEMON_FAILURE,
-  SET_URL
+  REMOVE_POKEMON,
+  SET_URL,
 } = pokemonList;
 const initialState = {
-  isFetching: false,
   pokemon: null,
   error: null,
-  url: null
+  url: null,
 };
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_POKEMON_START:
       return {
         ...state,
-        isFetching: true
+        error: null,
       };
     case FETCH_POKEMON_SUCCESS:
       const newPokemon = {
@@ -28,23 +28,27 @@ export const reducer = (state = initialState, action) => {
         sprites: action.payload.sprites,
         game_indices: action.payload.game_indices,
         stats: action.payload.stats,
-        types: action.payload.types
+        types: action.payload.types,
       };
       return {
         ...state,
-        isFetching: false,
-        pokemon: state.pokemon ? [...state.pokemon, newPokemon] : [newPokemon]
+        pokemon: state.pokemon ? [...state.pokemon, newPokemon] : [newPokemon],
       };
     case FETCH_POKEMON_FAILURE:
       return {
         ...state,
-        isFetching: false,
-        error: `${action.payload.status}: ${action.payload.message}`
+        error: `${action.payload.message}`,
+      };
+    case REMOVE_POKEMON:
+      return {
+        ...state,
+        // pokemon: state.pokemon.filter((x) => x.id !== action.payload.id),
+        pokemon: [...state.pokemon.slice(0, action.payload), ...state.pokemon.slice(action.payload + 1, state.pokemon.length)]
       };
     case SET_URL:
       return {
         ...state,
-        url: action.payload
+        url: action.payload,
       };
     default:
       return state;

@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const SET_POPUP_START = "SET_POPUP_START";
 export const SET_POPUP_SUCCESS = "SET_POPUP_SUCCESS";
 export const SET_POPUP_FAILURE = "SET_POPUP_FAILURE";

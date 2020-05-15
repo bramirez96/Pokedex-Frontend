@@ -12,7 +12,7 @@ const Popup = (props) => {
         {isFetching && "Loading data..."}
         {!isFetching && name}
       </h5>
-      {!isFetching && <img src={front_default} />}
+      {!isFetching && <img src={front_default} alt="" />}
     </StyledPopup>
   );
 };

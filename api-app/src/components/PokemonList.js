@@ -11,7 +11,7 @@ const {
   fetchPokemonStart,
   fetchPokemonSuccess,
   fetchPokemonFailure,
-  setUrl
+  setUrl,
 } = pokemonList;
 
 const PokemonList = (props) => {
@@ -20,10 +20,9 @@ const PokemonList = (props) => {
     fetchPokemonSuccess,
     fetchPokemonFailure,
     setUrl,
-    isFetching,
     pokemon,
     poppedOut,
-    url
+    url,
   } = props;
   useEffect(() => {
     setUrl("venusaur");
@@ -34,43 +33,43 @@ const PokemonList = (props) => {
       axios
         .get(url)
         .then((res) => {
-          fetchPokemonSuccess(res.data);
+          setUrl("");
+          if (!res.data.count) {
+            fetchPokemonSuccess(res.data);
+          }
         })
         .catch((err) => {
-          fetchPokemonFailure({
-            status: err.response.status,
-            message: err.response.data
-          });
+          fetchPokemonFailure(err);
         });
     }
   }, [url]);
   return (
     <StyledList>
-      {!isFetching && pokemon && (
+      {pokemon && (
         <div className="container">
-          {pokemon.map((x, i) => (
-            <PokemonCard key={i} pokemon={x} />
+          {pokemon.map((x, index) => (
+            <PokemonCard key={index} pokemon={x} index={index} />
           ))}
         </div>
       )}
-      {isFetching && <div className="loading">Loading your pokemon...</div>}
-      {poppedOut && <Popup />}
+      {/* {poppedOut && <Popup />} */}
     </StyledList>
   );
 };
 
 const StyledList = styled.section`
-  padding: 20px;
+  margin-bottom: 5vh;
   .container {
     display: flex;
     align-content: flex-start;
+    flex-flow: row wrap;
   }
 `;
 
 const mapStateToProps = (state) => {
   return {
     ...state.pokemonList,
-    poppedOut: state.popup.poppedOut
+    poppedOut: state.popup.poppedOut,
   };
 };
 
@@ -78,5 +77,5 @@ export default connect(mapStateToProps, {
   fetchPokemonStart,
   fetchPokemonSuccess,
   fetchPokemonFailure,
-  setUrl
+  setUrl,
 })(PokemonList);
