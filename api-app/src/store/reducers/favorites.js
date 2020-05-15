@@ -24,7 +24,7 @@ export const reducer = (state = initialState, action) => {
     case REMOVE_FAVORITE:
       return {
         ...state,
-        favorites: state.favorites.filter((x) => x.id != action.payload.id),
+        favorites: state.favorites.filter((x) => x.id !== action.payload.id),
       };
     case TOGGLE_OPEN:
       return {

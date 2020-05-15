@@ -1,19 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { styles } from "../data";
 
 import FavoriteCard from "./FavoriteCard";
 
 const Favorites = (props) => {
-  const { favorites, isOpen } = props;
+  const { favorites, isOpen, accent } = props;
   return (
-    <StyledFavs className={`header${isOpen ? " open" : ""}`}>
+    <StyledFavs accent={accent} className={`header${isOpen ? " open" : ""}`}>
       <h2>FAVORITES</h2>
       {favorites && (
         <div className="container">
           {favorites.map((x) => (
-            <FavoriteCard favorite={x} />
+            <FavoriteCard favorite={x} key={x.id} />
           ))}
         </div>
       )}
@@ -26,18 +25,21 @@ const StyledFavs = styled.div`
   position: absolute;
   top: 0;
   height: 100%;
-  right: -22%;
-  transition: 1s right;
+  left: -22%;
+  transition: 1s left;
   transition-timing-function: ease-in-out;
   background-color: #0006;
+  text-shadow: 0 0 10px black;
   &.open {
-    right: 0;
+    left: 0;
   }
   h2 {
+    text-align: left;
     color: white;
     font-size: 2rem;
-    padding: 20px;
-    text-align: right;
+    padding: 20px 10%;
+    text-decoration: underline;
+    text-decoration-color: ${(props) => props.accent};
   }
   & > .container {
     padding: 0 10% 20px;
@@ -46,7 +48,8 @@ const StyledFavs = styled.div`
 
 const mapStateToProps = (state) => {
   const { favorites, isOpen } = state.favorites;
-  return { favorites, isOpen };
+  const { accent } = state.settings;
+  return { favorites, isOpen, accent };
 };
 
 export default connect(mapStateToProps, {})(Favorites);

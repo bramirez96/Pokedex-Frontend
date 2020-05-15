@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { styles } from "../data";
 
-import { popup, favorites } from "../store/actions/";
+import { popup, favorites, pokemonList } from "../store/actions/";
 const { setPopup } = popup;
 const { addFavorite, removeFavorite } = favorites;
+const { removePokemon } = pokemonList;
 
 const PokemonCard = (props) => {
-  const { addFavorite, removeFavorite, accent, pokemon } = props;
+  const { addFavorite, removeFavorite, accent, pokemon, removePokemon } = props;
   const {
     name,
     id,
@@ -34,9 +34,17 @@ const PokemonCard = (props) => {
     removeFavorite(pokemon);
   };
   return (
-    <StyledCard accent={accent} onClick={handleClick}>
+    <StyledCard accent={accent}>
+      <span
+        className="close"
+        onClick={() => {
+          removePokemon(pokemon);
+        }}
+      >
+        &times;
+      </span>
       <div className="title">
-        <img src={sprites.front_default} />
+        <img src={sprites.front_default} alt="" />
         <div>
           <h2>
             {id}. {name}
@@ -83,6 +91,19 @@ const StyledCard = styled.div`
   border: 1px solid black;
   box-shadow: 0 0 10px 3px black;
   font-family: "Ubuntu", sans-serif;
+  position: relative;
+  .close {
+    position: absolute;
+    right: 9px;
+    top: 5px;
+    font-size: 1.5rem;
+    font-family: "Ubuntu", sans-serif;
+    cursor: pointer;
+    color: white;
+    &:hover {
+      text-shadow: 0 0 10px black;
+    }
+  }
   .title {
     display: flex;
     flex-flow: row nowrap;
@@ -142,4 +163,5 @@ export default connect(mapStateToProps, {
   setPopup,
   addFavorite,
   removeFavorite,
+  removePokemon,
 })(PokemonCard);

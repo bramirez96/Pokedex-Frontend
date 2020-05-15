@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { styles } from "../data";
-
 import { favorites, pokemonList } from "../store/actions";
 const { removeFavorite } = favorites;
 const { setUrl } = pokemonList;
@@ -13,7 +11,7 @@ const FavoriteCard = (props) => {
   const { name, sprites } = favorite;
   return (
     <StyledCard accent={accent}>
-      <img src={sprites.front_default} />
+      <img src={sprites.front_default} alt="" />
       <div>
         <h3>{name}</h3>
         <div className="buttons">
@@ -22,14 +20,14 @@ const FavoriteCard = (props) => {
               removeFavorite(favorite);
             }}
           >
-            REMOVE
+            Remove
           </button>
           <button
             onClick={() => {
               setUrl(name);
             }}
           >
-            OPEN
+            Open
           </button>
         </div>
       </div>
@@ -38,7 +36,7 @@ const FavoriteCard = (props) => {
 };
 
 const StyledCard = styled.div`
-  padding: 13px 20px;
+  padding: 13px 10px 13px 20px;
   border: 1px solid black;
   box-shadow: 0 0 5px black;
   background-color: ${(props) => props.accent};
@@ -64,12 +62,19 @@ const StyledCard = styled.div`
     .buttons {
       display: flex;
       flex-flow: row nowrap;
+      justify-content: center;
       button {
+        margin-right: 5px;
         width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        text-align: center;
         font-family: "Ubuntu", sans-serif;
+        color: ${(props) => props.accent};
+        font-weight: 500;
+        text-transform: capitalize;
+        cursor: pointer;
+        &:hover {
+          background-color: #aaa;
+        }
       }
     }
   }

@@ -89,7 +89,7 @@ const StyledApp = styled.div`
 const mapStateToProps = (state) => {
   const { favorites } = state.favorites;
   const { background, accent } = state.settings;
-  return { favorites, background };
+  return { favorites, background, accent };
 };
 
 export default connect(mapStateToProps, { setFavorites, setSettings })(App);

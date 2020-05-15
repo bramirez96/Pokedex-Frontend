@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { header, pokemonList, favorites, settings } from "../store/actions";
-import { styles } from "../data";
 const { sendSearch, handleInput } = header;
 const { setUrl } = pokemonList;
 const { toggleOpen } = favorites;
@@ -45,11 +44,11 @@ const Header = (props) => {
           disabled={isFetching}
         />
       </form>
-      <span className="button right" onClick={toggleOpen}>
-        FAVORITES
+      <span className="button left" onClick={toggleOpen}>
+        Favorites
       </span>
-      <span className="button left" onClick={openSettings}>
-        SETTINGS
+      <span className="button right" onClick={openSettings}>
+        Settings
       </span>
     </StyledHeader>
   );
@@ -59,7 +58,7 @@ const StyledHeader = styled.header`
   font-family: "Ubuntu", sans-serif;
   height: 15vh;
   min-height: 100px;
-  background-color: #00000066;
+  background-color: #0009;
   color: white;
   display: flex;
   justify-content: center;
@@ -70,15 +69,20 @@ const StyledHeader = styled.header`
   left: 0;
   span.button {
     position: absolute;
-    top: 40%;
-    padding: 10px;
+    top: 30%;
+    height: 40%;
+    padding: 10px 20px;
     background-color: ${(props) => props.accent};
     cursor: pointer;
+    font-family: "Ubuntu", sans-serif;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
     &.left {
-      left: 20px;
+      left: 3%;
     }
     &.right {
-      right: 20px;
+      right: 3%;
     }
   }
   .error {

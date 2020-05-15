@@ -40,7 +40,7 @@ const PokemonList = (props) => {
           fetchPokemonFailure(err);
         });
     }
-  }, [url]);
+  }, [url, setUrl]);
   return (
     <StyledList>
       { pokemon && (
