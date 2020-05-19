@@ -12,6 +12,13 @@ export const StyledSettings = styled.div`
   background-color: #0006;
   color: white;
   text-shadow: 0 0 10px black;
+
+  overflow: scroll;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   &.open {
     right: 0;
   }

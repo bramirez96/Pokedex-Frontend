@@ -10,9 +10,16 @@ export const StyledCard = styled.div`
   box-shadow: 0 0 10px 3px black;
   font-family: "Ubuntu", sans-serif;
   position: relative;
-  .close {
+  .ui {
+    &.close {
+      right: 9px;
+    }
+    &.pop {
+      right: 30px;
+      font-size: 18px;
+      line-height: 26px;
+    }
     position: absolute;
-    right: 9px;
     top: 5px;
     font-size: 1.5rem;
     font-family: "Ubuntu", sans-serif;
@@ -35,6 +42,7 @@ export const StyledCard = styled.div`
       box-shadow: 0 0 5px 1px #000;
       border: 1px solid black;
       border-radius: 10px 0 0 0;
+      max-height: 96px;
     }
     & > div {
       display: flex;
@@ -63,12 +71,14 @@ export const StyledCard = styled.div`
   }
   .content {
     padding: 12px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     h4 {
       font-size: 1.5em;
       font-weight: 400;
-      span {
-        font-weight: 900;
-      }
+      margin-bottom: 1vh;
     }
   }
 `;

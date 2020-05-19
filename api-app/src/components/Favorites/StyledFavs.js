@@ -11,6 +11,13 @@ export const StyledFavs = styled.div`
   transition-timing-function: ease-in-out;
   background-color: #0006;
   text-shadow: 0 0 10px black;
+
+  overflow: scroll;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   &.open {
     left: 0;
   }
