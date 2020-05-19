@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { connect } from "react-redux";
+import { StyledPopup } from "./StyledPopup";
 
 const Popup = (props) => {
   const { name } = props.pokemon;
@@ -17,13 +17,11 @@ const Popup = (props) => {
   );
 };
 
-const StyledPopup = styled.div``;
-
 const mapStateToProps = (state) => {
   const { pokemon, isFetching } = state.popup;
   return {
     pokemon,
-    isFetching
+    isFetching,
   };
 };
 

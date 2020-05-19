@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import { StyledList } from "./StyledPokemonList";
 
 import PokemonCard from "../PokemonCard";
 import Popup from "../Popup";
@@ -56,15 +56,6 @@ const PokemonList = (props) => {
     </StyledList>
   );
 };
-
-const StyledList = styled.section`
-  margin-bottom: 5vh;
-  .container {
-    display: flex;
-    align-content: flex-start;
-    flex-flow: row wrap;
-  }
-`;
 
 const mapStateToProps = (state) => {
   return {
