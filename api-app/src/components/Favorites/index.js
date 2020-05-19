@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import FavoriteCard from "./FavoriteCard";
+import FavoriteCard from "../FavoriteCard";
 
 const Favorites = (props) => {
   const { favorites, isOpen, accent } = props;

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { favorites, pokemonList } from "../store/actions";
+import { favorites, pokemonList } from "../../store/actions";
 const { removeFavorite } = favorites;
 const { setUrl } = pokemonList;
 

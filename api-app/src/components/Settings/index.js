@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { styles } from "../data";
+import { styles } from "../../data";
 
-import { settings } from "../store/actions";
+import { settings } from "../../store/actions";
 const { setBG, setAccent } = settings;
 
 const Settings = (props) => {

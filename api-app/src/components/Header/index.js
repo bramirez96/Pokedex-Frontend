@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { header, pokemonList, favorites, settings } from "../store/actions";
+import { header, pokemonList, favorites, settings } from "../../store/actions";
 const { sendSearch, handleInput } = header;
 const { setUrl } = pokemonList;
 const { toggleOpen } = favorites;

@@ -3,10 +3,10 @@ import axios from "axios";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import PokemonCard from "./PokemonCard";
-import Popup from "./Popup";
+import PokemonCard from "../PokemonCard";
+import Popup from "../Popup";
 
-import { pokemonList } from "../store/actions";
+import { pokemonList } from "../../store/actions";
 const {
   fetchPokemonStart,
   fetchPokemonSuccess,
