@@ -48,7 +48,7 @@ const PokemonList = (props) => {
       {pokemon && (
         <div className="container">
           {pokemon.map((x, index) => (
-            <PokemonCard key={index} pokemon={x} index={index} />
+            <PokemonCard key={`${x.id}-${index}`} pokemon={x} index={index} />
           ))}
         </div>
       )}
