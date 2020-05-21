@@ -16,7 +16,7 @@ export const SET_URL = "SET_URL";
 export const setUrl = (id) => (dispatch) => {
   dispatch({
     type: SET_URL,
-    payload: `http://pokeapi.co/api/v2/pokemon/${id.toLowerCase()}`,
+    payload: `https://pokeapi.co/api/v2/pokemon/${id.toLowerCase()}`,
   });
 };
 
