@@ -3,8 +3,8 @@ import { settings } from "../actions";
 import { SET_ACCENT } from "../actions/settings";
 const { SET_BG, TOGGLE_SETTINGS, SET_SETTINGS } = settings;
 const initialState = {
-  background: styles.bg[0].url,
-  accent: styles.colors[0].url,
+  background: styles.bg[1].url,
+  accent: styles.colors[1].hex,
   setOpen: false,
 };
 

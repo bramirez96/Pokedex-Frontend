@@ -15,6 +15,7 @@ const PokemonCard = (props) => {
     removeFavorite,
     accent,
     pokemon,
+    favorites,
     removePokemon,
     index,
   } = props;
@@ -52,7 +53,7 @@ const PokemonCard = (props) => {
       >
         &times;
       </span>
-      <span className="ui pop">POP</span>
+      {/* <span className="ui pop">POP</span> */}
       <div className="title">
         <img src={sprites.front_default} alt="" />
         <div>
@@ -97,6 +98,7 @@ const PokemonCard = (props) => {
 
 const mapStateToProps = (state) => {
   const { accent } = state.settings;
+  const { favorites } = state.favorites;
   return { accent };
 };
 
