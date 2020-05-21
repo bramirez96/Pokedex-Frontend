@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import { StyledList } from "./StyledPokemonList";
 
-import PokemonCard from "./PokemonCard";
-import Popup from "./Popup";
+import PokemonCard from "../PokemonCard";
+import Popup from "../Popup";
 
-import { pokemonList } from "../store/actions";
+import { pokemonList } from "../../store/actions";
 const {
   fetchPokemonStart,
   fetchPokemonSuccess,
@@ -48,7 +48,7 @@ const PokemonList = (props) => {
       {pokemon && (
         <div className="container">
           {pokemon.map((x, index) => (
-            <PokemonCard key={index} pokemon={x} index={index} />
+            <PokemonCard key={`${x.id}-${index}`} pokemon={x} index={index} />
           ))}
         </div>
       )}
@@ -56,15 +56,6 @@ const PokemonList = (props) => {
     </StyledList>
   );
 };
-
-const StyledList = styled.section`
-  margin-bottom: 5vh;
-  .container {
-    display: flex;
-    align-content: flex-start;
-    flex-flow: row wrap;
-  }
-`;
 
 const mapStateToProps = (state) => {
   return {
