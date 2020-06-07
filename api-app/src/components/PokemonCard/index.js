@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { StyledCard } from "./StyledPokemonCard";
 import { Type } from "../Type";
 import { getHeight, getWeight } from "../../utils";
 
-import { popup, favorites, pokemonList } from "../../store/actions";
+import { popup, favorites, pokemon as xyzz } from "../../store/actions";
 const { setPopup } = popup;
 const { addFavorite, removeFavorite } = favorites;
-const { removePokemon } = pokemonList;
 
 const PokemonCard = (props) => {
   const {
+    index,
     addFavorite,
     removeFavorite,
     accent,
     pokemon,
     favorites,
-    removePokemon,
-    index,
+    getInfo,
   } = props;
   const {
+    url,
     name,
     id,
     height,
@@ -29,10 +29,6 @@ const PokemonCard = (props) => {
     stats,
     types,
   } = pokemon;
-  const handleClick = (e) => {
-    e.preventDefault();
-    props.setPopup(props.pokemon);
-  };
   const handleAdd = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -43,16 +39,14 @@ const PokemonCard = (props) => {
     e.stopPropagation();
     removeFavorite(pokemon);
   };
-  return (
+  useEffect(() => {
+    // Pull new info and store it in state
+    if (url && !id) {
+      getInfo(url);
+    }
+  }, []);
+  return pokemon.id ? (
     <StyledCard accent={accent}>
-      <span
-        className="ui close"
-        onClick={() => {
-          removePokemon(index);
-        }}
-      >
-        &times;
-      </span>
       {/* <span className="ui pop">POP</span> */}
       <div className="title">
         <img src={sprites.front_default} alt="" />
@@ -93,6 +87,8 @@ const PokemonCard = (props) => {
         </h4>
       </div>
     </StyledCard>
+  ) : (
+    <></>
   );
 };
 
@@ -106,5 +102,5 @@ export default connect(mapStateToProps, {
   setPopup,
   addFavorite,
   removeFavorite,
-  removePokemon,
+  getInfo: xyzz.getInfo,
 })(PokemonCard);

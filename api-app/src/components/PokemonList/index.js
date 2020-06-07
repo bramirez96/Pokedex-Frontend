@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { StyledList } from "./StyledPokemonList";
@@ -6,49 +6,24 @@ import { StyledList } from "./StyledPokemonList";
 import PokemonCard from "../PokemonCard";
 import Popup from "../Popup";
 
-import { pokemonList } from "../../store/actions";
-const {
-  fetchPokemonStart,
-  fetchPokemonSuccess,
-  fetchPokemonFailure,
-  setUrl,
-} = pokemonList;
+import { pokemon } from "../../store/actions";
 
 const PokemonList = (props) => {
-  const {
-    fetchPokemonStart,
-    fetchPokemonSuccess,
-    fetchPokemonFailure,
-    setUrl,
-    pokemon,
-    poppedOut,
-    url,
-  } = props;
+  const { pokemon, isFetching } = props;
   useEffect(() => {
-    setUrl("venusaur");
+    props.fetchNewPokemon();
   }, []);
-  useEffect(() => {
-    if (url) {
-      fetchPokemonStart();
-      axios
-        .get(url)
-        .then((res) => {
-          setUrl("");
-          if (!res.data.count) {
-            fetchPokemonSuccess(res.data);
-          }
-        })
-        .catch((err) => {
-          fetchPokemonFailure(err);
-        });
-    }
-  }, [url]);
   return (
     <StyledList>
+      {isFetching && <h1>Loading Pokemon...</h1>}
       {pokemon && (
         <div className="container">
           {pokemon.map((x, index) => (
-            <PokemonCard key={`${x.id}-${index}`} pokemon={x} index={index} />
+            <PokemonCard
+              key={`${x.id}-${index}`}
+              pokemon={x}
+              index={index}
+            />
           ))}
         </div>
       )}
@@ -58,15 +33,13 @@ const PokemonList = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  const { list, page, limit } = state.pokemon;
   return {
-    ...state.pokemonList,
-    poppedOut: state.popup.poppedOut,
+    pokemon: list ? list.slice((page - 1) * limit, page * limit) : list,
+    isFetching: state.pokemon.isFetching,
   };
 };
 
 export default connect(mapStateToProps, {
-  fetchPokemonStart,
-  fetchPokemonSuccess,
-  fetchPokemonFailure,
-  setUrl,
+  fetchNewPokemon: pokemon.fetchPokemon,
 })(PokemonList);

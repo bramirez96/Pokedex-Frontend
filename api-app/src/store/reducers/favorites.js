@@ -15,12 +15,14 @@ export const reducer = (state = initialState, action) => {
         favorites: action.payload,
       };
     case ADD_FAVORITE:
-      return state.favorites.some((x) => x.id === action.payload.id)
-        ? state
-        : {
-            ...state,
-            favorites: [...state.favorites, action.payload],
-          };
+      return state.favorites
+        ? state.favorites.some((x) => x.id === action.payload.id)
+          ? state
+          : {
+              ...state,
+              favorites: [...state.favorites, action.payload],
+            }
+        : { ...state, favorites: [action.payload] };
     case REMOVE_FAVORITE:
       return {
         ...state,
