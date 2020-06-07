@@ -2,9 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { StyledCard } from "./StyledFavoriteCard";
 
-import { favorites, pokemonList } from "../../store/actions";
+import { favorites } from "../../store/actions";
 const { removeFavorite } = favorites;
-const { setUrl } = pokemonList;
 
 const FavoriteCard = (props) => {
   const { favorite, removeFavorite, accent, setUrl } = props;
@@ -44,6 +43,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setUrl, removeFavorite })(
-  FavoriteCard
-);
+export default connect(mapStateToProps, { removeFavorite })(FavoriteCard);

@@ -7,6 +7,7 @@ import PokemonCard from "../PokemonCard";
 import Popup from "../Popup";
 
 import { pokemon } from "../../store/actions";
+import Navigation from "./Navigation";
 
 const PokemonList = (props) => {
   const { pokemon, isFetching } = props;
@@ -16,14 +17,11 @@ const PokemonList = (props) => {
   return (
     <StyledList>
       {isFetching && <h1>Loading Pokemon...</h1>}
+      <Navigation />
       {pokemon && (
         <div className="container">
           {pokemon.map((x, index) => (
-            <PokemonCard
-              key={`${x.id}-${index}`}
-              pokemon={x}
-              index={index}
-            />
+            <PokemonCard key={`${x.id}-${index}`} pokemon={x} index={index} />
           ))}
         </div>
       )}

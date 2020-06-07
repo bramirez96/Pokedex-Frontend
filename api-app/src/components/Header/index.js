@@ -2,9 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { StyledHeader } from "./StyledHeader";
 
-import { header, pokemonList, favorites, settings } from "../../store/actions";
+import { header, favorites, settings } from "../../store/actions";
 const { sendSearch, handleInput } = header;
-const { setUrl } = pokemonList;
 const { toggleOpen } = favorites;
 const { openSettings } = settings;
 
@@ -12,7 +11,6 @@ const Header = (props) => {
   const {
     searchValue,
     isFetching,
-    error,
     handleInput,
     sendSearch,
     setUrl,
@@ -27,7 +25,7 @@ const Header = (props) => {
   };
   return (
     <StyledHeader accent={accent}>
-      {error && <span class="error">{error}</span>}
+      {/* {error && <span class="error">{error}</span>} */}
       <h1>POKEMON</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -56,15 +54,13 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   const { searchValue, isFetching } = state.header;
-  const { error } = state.pokemonList;
   const { accent } = state.settings;
-  return { searchValue, isFetching, error, accent };
+  return { searchValue, isFetching, accent };
 };
 
 export default connect(mapStateToProps, {
   toggleOpen,
   sendSearch,
   handleInput,
-  setUrl,
   openSettings,
 })(Header);
