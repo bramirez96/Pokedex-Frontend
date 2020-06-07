@@ -32,9 +32,7 @@ const Navigation = (props) => {
     prev();
   };
   const pageHandler = (e) => {
-    if (isNaN(e.target.value)) {
-      setPage(page);
-    } else {
+    if (!isNaN(e.target.value)) {
       setPage(e.target.value);
     }
   };
