@@ -29,6 +29,7 @@ const PokemonCard = (props) => {
     stats,
     types,
   } = pokemon;
+  const isFavorite = true;
   const handleAdd = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -55,12 +56,15 @@ const PokemonCard = (props) => {
             {id}. {name}
           </h2>
           <div>
-            <button onClick={handleAdd} title="Add as Favorite">
-              +
-            </button>
-            <button onClick={handleRemove} title="Remove Favorite">
-              -
-            </button>
+            {isFavorite ? (
+              <button onClick={handleAdd} title="Add as Favorite">
+                +
+              </button>
+            ) : (
+              <button onClick={handleRemove} title="Remove Favorite">
+                -
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { pokemon } from "../actions";
+import { pokemon, header } from "../actions";
 const {
   FETCH_POKEMON_START,
   FETCH_POKEMON_SUCCESS,
@@ -9,8 +9,10 @@ const {
   PREV_PAGE,
   SET_PAGE,
 } = pokemon;
+const { UPDATE_SEARCH } = header;
 const initialState = {
   list: null,
+  filtered: null,
   count: 0,
   isFetching: false,
   page: 1,
@@ -28,6 +30,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         list: action.payload,
+        filtered: action.payload,
       };
     case FETCH_POKEMON_FAILURE:
       return {
@@ -68,6 +71,15 @@ export const reducer = (state = initialState, action) => {
               ? action.payload
               : state.page
             : state.page,
+      };
+    case UPDATE_SEARCH:
+      const filtered = state.list.filter((x) =>
+        x.name.includes(action.payload)
+      );
+      return {
+        ...state,
+        filtered,
+        count: filtered.length
       };
     default:
       return state;

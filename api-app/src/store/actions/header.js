@@ -1,9 +1,4 @@
-export const SEND_SEARCH = "SEND_SEARCH";
-export const sendSearch = (e) => (dispatch) => {
-  dispatch({ type: SEND_SEARCH });
-};
-
-export const UPDATE_INPUT = "UPDATE_INPUT";
-export const handleInput = (e) => (dispatch) => {
-  dispatch({ type: UPDATE_INPUT, payload: e.target.value });
+export const UPDATE_SEARCH = "UPDATE_SEARCH";
+export const updateSearch = (e) => (dispatch) => {
+  dispatch({ type: UPDATE_SEARCH, payload: e.target.value });
 };

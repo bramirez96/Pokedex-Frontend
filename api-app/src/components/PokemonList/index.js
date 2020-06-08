@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { v4 as uuid } from "uuid";
 import { connect } from "react-redux";
 import { StyledList } from "./StyledPokemonList";
 
@@ -21,7 +22,7 @@ const PokemonList = (props) => {
       {pokemon && (
         <div className="container">
           {pokemon.map((x, index) => (
-            <PokemonCard key={`${x.id}-${index}`} pokemon={x} index={index} />
+            <PokemonCard key={index} pokemon={x} index={index} />
           ))}
         </div>
       )}
@@ -31,9 +32,11 @@ const PokemonList = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { list, page, limit } = state.pokemon;
+  const { page, limit, filtered } = state.pokemon;
   return {
-    pokemon: list ? list.slice((page - 1) * limit, page * limit) : list,
+    pokemon: filtered
+      ? filtered.slice((page - 1) * limit, page * limit)
+      : filtered,
     isFetching: state.pokemon.isFetching,
   };
 };

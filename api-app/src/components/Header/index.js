@@ -3,45 +3,22 @@ import { connect } from "react-redux";
 import { StyledHeader } from "./StyledHeader";
 
 import { header, favorites, settings } from "../../store/actions";
-const { sendSearch, handleInput } = header;
 const { toggleOpen } = favorites;
 const { openSettings } = settings;
 
 const Header = (props) => {
-  const {
-    searchValue,
-    isFetching,
-    handleInput,
-    sendSearch,
-    setUrl,
-    toggleOpen,
-    openSettings,
-    accent,
-  } = props;
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    sendSearch();
-    setUrl(searchValue);
-  };
+  const { searchValue, updateSearch, toggleOpen, openSettings, accent } = props;
   return (
-    <StyledHeader accent={accent}>
-      {/* {error && <span class="error">{error}</span>} */}
-      <h1>POKEMON</h1>
-      <form onSubmit={handleSubmit}>
+    <StyledHeader accent={accent}><h1>POKEMON</h1>
+      <div>
         <input
           type="text"
           name="search"
-          placeholder="Enter Pokemon Name or ID..."
+          placeholder="Search by Pokemon Name or ID..."
           value={searchValue}
-          onChange={handleInput}
+          onChange={updateSearch}
         />
-        <input
-          type="submit"
-          name="submit"
-          value="Search"
-          disabled={isFetching}
-        />
-      </form>
+      </div>
       <span className="button left" onClick={toggleOpen}>
         Favorites
       </span>
@@ -53,14 +30,13 @@ const Header = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { searchValue, isFetching } = state.header;
+  const { searchValue } = state.header;
   const { accent } = state.settings;
-  return { searchValue, isFetching, accent };
+  return { searchValue, accent };
 };
 
 export default connect(mapStateToProps, {
   toggleOpen,
-  sendSearch,
-  handleInput,
   openSettings,
+  updateSearch: header.updateSearch,
 })(Header);

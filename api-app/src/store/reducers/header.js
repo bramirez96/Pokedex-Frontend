@@ -1,21 +1,16 @@
 import { header } from "../actions";
-const { SEND_SEARCH, UPDATE_INPUT } = header;
+const { UPDATE_SEARCH } = header;
 
 const initialState = {
-  searchValue: ""
+  searchValue: "",
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SEND_SEARCH:
+    case UPDATE_SEARCH:
       return {
         ...state,
-        searchValue: ""
-      };
-    case UPDATE_INPUT:
-      return {
-        ...state,
-        searchValue: action.payload
+        searchValue: action.payload,
       };
     default:
       return state;

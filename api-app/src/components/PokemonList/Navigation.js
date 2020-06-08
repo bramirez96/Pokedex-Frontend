@@ -22,7 +22,7 @@ const StyledNav = styled.div`
 `;
 
 const Navigation = (props) => {
-  const { numPages, page, limit, count, next, prev, setPage } = props;
+  const { numPages, page, limit, next, prev, setPage } = props;
   const nextHandler = (e) => {
     e.preventDefault();
     next();
@@ -63,10 +63,10 @@ const Navigation = (props) => {
 const mapStateToProps = (state) => {
   const { page, limit, count } = state.pokemon;
   return {
+    count,
     numPages: Math.ceil(count / limit),
     page,
     limit,
-    count,
   };
 };
 
