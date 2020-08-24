@@ -1,6 +1,6 @@
 # React Pokedex Frontend
 
-Created as a school project and taken to the next level in my free time over the following weeks.
+Created as a school project and taken to the next level in my free time.
 
 ## Notable Features
 
