@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { StyledCard } from "./StyledPokemonCard";
 import { Type } from "../Type";
@@ -17,6 +17,7 @@ const PokemonCard = (props) => {
         pokemon,
         removePokemon,
         index,
+        favorites,
     } = props;
     const {
         name,
@@ -29,6 +30,13 @@ const PokemonCard = (props) => {
         types,
         isFavorite,
     } = pokemon;
+
+    useEffect(() => {
+        if (favorites.some((x) => id === x.id)) {
+            addFavorite(pokemon);
+        }
+    }, []);
+
     const handleClick = (e) => {
         e.preventDefault();
         props.setPopup(props.pokemon);
@@ -117,7 +125,7 @@ const PokemonCard = (props) => {
 const mapStateToProps = (state) => {
     const { accent } = state.settings;
     const { favorites } = state.favorites;
-    return { accent };
+    return { accent, favorites };
 };
 
 export default connect(mapStateToProps, {
