@@ -25,13 +25,12 @@ const PokemonCard = (props) => {
         height,
         weight,
         sprites,
-        abilities,
-        stats,
         types,
         isFavorite,
     } = pokemon;
 
     useEffect(() => {
+        // This ensures that the correct state is set for isFavorite
         if (favorites.some((x) => id === x.id)) {
             addFavorite(pokemon);
         }
@@ -84,9 +83,9 @@ const PokemonCard = (props) => {
                                 />
                             </button>
                         )}
-                        {/* <button onClick={handleClick}>
+                        <button onClick={handleClick}>
                             <img src={require("../../data/icons/popout.png")} />
-                        </button> */}
+                        </button>
                     </div>
                 </div>
             </div>

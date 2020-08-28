@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { StyledList } from "./StyledPokemonList";
 
 import PokemonCard from "../PokemonCard";
-import Popup from "../Popup";
 
 import { pokemonList } from "../../store/actions";
 const {
@@ -21,7 +20,6 @@ const PokemonList = (props) => {
     fetchPokemonFailure,
     setUrl,
     pokemon,
-    poppedOut,
     url,
   } = props;
   useEffect(() => {
@@ -52,15 +50,13 @@ const PokemonList = (props) => {
           ))}
         </div>
       )}
-      {/* {poppedOut && <Popup />} */}
     </StyledList>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    ...state.pokemonList,
-    poppedOut: state.popup.poppedOut,
+    ...state.pokemonList
   };
 };
 
