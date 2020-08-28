@@ -1,5 +1,4 @@
 export const SET_FAVORITES = "SET_FAVORITES";
-
 export const setFavorites = (favArray) => (dispatch) => {
     dispatch({ type: SET_FAVORITES, payload: favArray });
 };
