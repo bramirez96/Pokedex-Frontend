@@ -1,6 +1,7 @@
 import _ from "lodash";
 
 import { pokemonList, favorites } from "../actions";
+import { APP_LOAD_SUCCESS } from "../actions/pokemonList";
 const {
     FETCH_POKEMON_START,
     FETCH_POKEMON_SUCCESS,
@@ -38,6 +39,14 @@ export const reducer = (state = initialState, action) => {
                         types: action.payload.types,
                         isFavorite: false,
                     },
+                },
+            };
+        case APP_LOAD_SUCCESS:
+            return {
+                ...state,
+                pokemon: {
+                    ...state.pokemon,
+                    ...action.payload,
                 },
             };
         case FETCH_POKEMON_FAILURE:

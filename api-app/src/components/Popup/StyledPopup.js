@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const StyledPopup = styled.div`
-    position: absolute;
-    height: 100%;
+    position: fixed;
+    height: 85vh;
     width: 100%;
-    top: 0;
+    top: 15vh;
     left: 0;
     z-index: 20;
     background: #0009;
@@ -12,7 +12,7 @@ export const StyledPopup = styled.div`
     .window {
         position: absolute;
         left: 25%;
-        top: 10vh;
+        top: 7.5vh;
         width: 50%;
         background: white;
         border-radius: 15px;

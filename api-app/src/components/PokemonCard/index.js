@@ -16,7 +16,6 @@ const PokemonCard = (props) => {
         accent,
         pokemon,
         removePokemon,
-        index,
         favorites,
     } = props;
     const { name, id, height, weight, sprites, types, isFavorite } = pokemon;
@@ -26,7 +25,7 @@ const PokemonCard = (props) => {
         if (favorites.some((x) => id === x.id)) {
             addFavorite(pokemon);
         }
-    }, []);
+    }, [favorites]);
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -62,6 +61,7 @@ const PokemonCard = (props) => {
                         {!isFavorite ? (
                             <button onClick={handleAdd} title="Add as Favorite">
                                 <img
+                                    alt="Add to Favorites"
                                     src={require("../../data/icons/favoff.png")}
                                 />
                             </button>
@@ -71,12 +71,16 @@ const PokemonCard = (props) => {
                                 title="Remove Favorite"
                             >
                                 <img
+                                    alt="Remove from Favorites"
                                     src={require("../../data/icons/favon.png")}
                                 />
                             </button>
                         )}
                         <button onClick={handleClick}>
-                            <img src={require("../../data/icons/popout.png")} />
+                            <img
+                                alt="View More Details"
+                                src={require("../../data/icons/popout.png")}
+                            />
                         </button>
                     </div>
                 </div>

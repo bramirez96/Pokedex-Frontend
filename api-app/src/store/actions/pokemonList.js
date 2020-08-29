@@ -23,3 +23,10 @@ export const REMOVE_POKEMON = "REMOVE_POKEMON";
 export const removePokemon = (index) => (dispatch) => {
     dispatch({ type: REMOVE_POKEMON, payload: index });
 };
+
+export const APP_LOADED = "APP_LOADED";
+export const APP_LOAD_SUCCESS = "APP_LOAD_SUCCESS";
+export const appLoadSuccess = (results) => ({
+    type: APP_LOAD_SUCCESS,
+    payload: results,
+});
