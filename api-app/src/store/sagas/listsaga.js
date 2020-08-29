@@ -24,9 +24,9 @@ export async function loadPokeDetails(list) {
                     return axios.get(x.url);
                 })
             );
-            res = {};
+            let response = {};
             req.forEach((x) => {
-                res[x.data.id] = {
+                response[x.data.id] = {
                     abilities: x.data.abilities,
                     height: x.data.height,
                     id: x.data.id,
@@ -38,7 +38,7 @@ export async function loadPokeDetails(list) {
                     isFavorite: false,
                 };
             });
-            return res;
+            return response;
         } catch (e) {
             console.log("FETCH FAILED, TRYING AGAIN!");
         }

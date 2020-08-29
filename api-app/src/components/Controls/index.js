@@ -28,7 +28,7 @@ const Controls = (props) => {
         let newPage = e.target.pageInput.value - 1;
         console.log("SUBMIT", newPage);
         if (
-            parseInt(newPage) != NaN &&
+            !isNaN(parseInt(newPage)) &&
             newPage > 0 &&
             newPage <= props.maxPage
         ) {
@@ -41,7 +41,9 @@ const Controls = (props) => {
         <StyledControls>
             <button onClick={clickPrev}>&#9664;</button>
             <form onSubmit={handlePage}>
-                <span><b>Page:&nbsp;</b></span>
+                <span>
+                    <b>Page:&nbsp;</b>
+                </span>
                 <input
                     name="pageInput"
                     type="text"

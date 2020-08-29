@@ -48,7 +48,7 @@ const Popup = (props) => {
             <div className="window" onClick={(e) => e.stopPropagation()}>
                 <div className="title">
                     <div>
-                        <img alt="Pokemon Image Sprite" className="sprite" src={front_default} alt="" />
+                        <img alt="Pokemon Sprite" className="sprite" src={front_default} alt="" />
                     </div>
                     <div className="grow">
                         <h2>

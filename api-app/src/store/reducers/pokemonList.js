@@ -1,13 +1,11 @@
-import _ from "lodash";
-
 import { pokemonList, favorites } from "../actions";
-import { SET_PAGE } from "../actions/pokemonList";
 const {
     APP_LOADED,
     APP_LOAD_SUCCESS,
     SET_COUNT,
     NEXT_PAGE,
     PREV_PAGE,
+    SET_PAGE,
 } = pokemonList;
 const { ADD_FAVORITE, REMOVE_FAVORITE } = favorites;
 const initialState = {
@@ -15,7 +13,7 @@ const initialState = {
     error: null,
     count: 0,
     page: 0,
-    isLoading: false,
+    isLoading: true,
     perPage: 12,
     maxPage: 0,
 };
