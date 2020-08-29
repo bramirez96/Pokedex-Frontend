@@ -43,14 +43,6 @@ const PokemonCard = (props) => {
     };
     return (
         <StyledCard accent={accent}>
-            <span
-                className="ui close"
-                onClick={() => {
-                    removePokemon(id);
-                }}
-            >
-                &times;
-            </span>
             <div className="title">
                 <img src={sprites.front_default} alt="" />
                 <div>
