@@ -23,7 +23,7 @@ export const setPopup = (pokemon) => async (dispatch) => {
                     .filter((y) => {
                         return y.language.name === "en";
                     })[0]
-                    .short_effect.replace(/[\n]/g, " ")
+                    .effect.replace(/[\n]/g, " ")
                     .replace("  ", " "),
             };
         });
