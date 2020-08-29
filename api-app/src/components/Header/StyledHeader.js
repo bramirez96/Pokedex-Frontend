@@ -13,6 +13,7 @@ export const StyledHeader = styled.header`
   position: relative;
   top: 0;
   left: 0;
+  border-bottom: 1px solid black;
   span.button {
     position: absolute;
     top: 30%;

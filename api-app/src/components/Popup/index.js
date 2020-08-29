@@ -48,7 +48,7 @@ const Popup = (props) => {
             <div className="window" onClick={(e) => e.stopPropagation()}>
                 <div className="title">
                     <div>
-                        <img className="sprite" src={front_default} alt="" />
+                        <img alt="Pokemon Sprite" className="sprite" src={front_default} alt="" />
                     </div>
                     <div className="grow">
                         <h2>
@@ -56,12 +56,14 @@ const Popup = (props) => {
                             {isFavorite ? (
                                 <button onClick={remFav}>
                                     <img
+                                        alt="Remove from Favorites"
                                         src={require("../../data/icons/favon.png")}
                                     />
                                 </button>
                             ) : (
                                 <button onClick={addFav}>
                                     <img
+                                        alt="Add to Favorites"
                                         src={require("../../data/icons/favoff.png")}
                                     />
                                 </button>

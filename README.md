@@ -2,6 +2,10 @@
 
 Created as a school project and taken to the next level in my free time.
 
+## Paradigm Refactor
+
+These changes are implemented in an attempt to make the pokedex more functional. The paradigm of the application will be shifted from searching for the pokemon you want to see and doing a `GET` request for each one to doing a series of large `GET` requests at the beginning of the program run in order to load all pokemon from the website.
+
 ## Notable Features
 
 - Ability to query the PokeAPI based on pokemon name or number and populate the displayed list

@@ -1,25 +1,25 @@
-export const FETCH_POKEMON_START = "FETCH_POKEMON_START";
-export const FETCH_POKEMON_SUCCESS = "FETCH_POKEMON_SUCCESS";
-export const FETCH_POKEMON_FAILURE = "FETCH_POKEMON_FAILURE";
-export const fetchPokemonStart = () => (dispatch) => {
-    dispatch({ type: FETCH_POKEMON_START });
-};
-export const fetchPokemonSuccess = (pokemon) => (dispatch) => {
-    dispatch({ type: FETCH_POKEMON_SUCCESS, payload: pokemon });
-};
-export const fetchPokemonFailure = (errorObj) => (dispatch) => {
-    dispatch({ type: FETCH_POKEMON_FAILURE, payload: errorObj });
-};
+export const APP_LOADED = "APP_LOADED";
+export const APP_LOAD_SUCCESS = "APP_LOAD_SUCCESS";
+export const appLoadSuccess = (results) => ({
+    type: APP_LOAD_SUCCESS,
+    payload: results,
+});
 
-export const SET_URL = "SET_URL";
-export const setUrl = (id) => (dispatch) => {
-    dispatch({
-        type: SET_URL,
-        payload: `https://pokeapi.co/api/v2/pokemon/${id.toLowerCase()}`,
-    });
-};
+export const SET_COUNT = "SET_COUNT";
+export const setCount = (num) => ({
+    type: SET_COUNT,
+    payload: num,
+});
 
-export const REMOVE_POKEMON = "REMOVE_POKEMON";
-export const removePokemon = (index) => (dispatch) => {
-    dispatch({ type: REMOVE_POKEMON, payload: index });
+export const NEXT_PAGE = "NEXT_PAGE";
+export const PREV_PAGE = "PREV_PAGE";
+export const SET_PAGE = "SET_PAGE";
+export const nextPage = () => (dispatch) => {
+    dispatch({ type: NEXT_PAGE });
+};
+export const prevPage = () => (dispatch) => {
+    dispatch({ type: PREV_PAGE });
+};
+export const setPage = (num) => (dispatch) => {
+    dispatch({ type: SET_PAGE, payload: num });
 };

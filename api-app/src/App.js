@@ -9,6 +9,8 @@ import Favorites from "./components/Favorites";
 import Settings from "./components/Settings";
 import { favorites, settings } from "./store/actions";
 import Popup from "./components/Popup";
+import { APP_LOADED } from "./store/actions/pokemonList";
+import { action } from ".";
 const { setFavorites } = favorites;
 const { setSettings } = settings;
 
@@ -59,9 +61,10 @@ const App = (props) => {
     };
     useEffect(() => {
         // Read in data from localStorage
+        action(APP_LOADED);
         setFavorites(readFavorites());
         setSettings(readSettings());
-    }, []);
+    }, [setFavorites, setSettings]);
     useEffect(() => {
         storeFavorites();
     }, [favorites]);
@@ -71,10 +74,10 @@ const App = (props) => {
     return (
         <StyledApp className="App" bg={background}>
             <Header />
+            <Favorites />
+            <Settings />
             <div className="container">
                 <PokemonList />
-                <Favorites />
-                <Settings />
                 {poppedOut && <Popup />}
             </div>
         </StyledApp>
@@ -92,6 +95,10 @@ const StyledApp = styled.div`
         position: relative;
         padding: 20px 3%;
         flex-grow: 1;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        max-height: 85vh;
+        max-width: 100vw;
     }
 `;
 
