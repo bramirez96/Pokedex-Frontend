@@ -1,7 +1,7 @@
 import { take, call, put } from "redux-saga/effects";
 import axios from "axios";
 
-import { APP_LOADED, appLoadSuccess } from "../actions/pokemonList";
+import { APP_LOADED, appLoadSuccess, setCount } from "../actions/pokemonList";
 
 export async function loadPokeList(count) {
     var url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${count}`;
@@ -24,7 +24,6 @@ export async function loadPokeDetails(list) {
                     return axios.get(x.url);
                 })
             );
-            console.log(req);
             res = {};
             req.forEach((x) => {
                 res[x.data.id] = {
@@ -39,7 +38,7 @@ export async function loadPokeDetails(list) {
                     isFavorite: false,
                 };
             });
-            return res
+            return res;
         } catch (e) {
             console.log("FETCH FAILED, TRYING AGAIN!");
         }
@@ -65,7 +64,6 @@ export function* appStartWatcher() {
         const list = yield call(loadPokeList, count);
         const res = yield call(loadPokeDetails, list);
         yield put(appLoadSuccess(res));
-        console.log("LOADED!");
-        // here I need to load them all!
+        yield put(setCount(count));
     }
 }
