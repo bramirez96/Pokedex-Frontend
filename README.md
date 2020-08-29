@@ -19,7 +19,7 @@ Created as a school project and taken to the next level in my free time.
   - rather than loading a single pokemon and relying on queries, I'd like to load all pokemon at application start
   - Note: this is implemented with bugs on branch `refactor-v2.0`
 
->  I spent a good amount of my vacation week learning to implement redux-saga rather than thunk to better manage complex nested promises, but haven't yet had time to revisit this project and implement my new knowledge
+>I spent a good amount of my vacation week learning to implement redux-saga rather than thunk to better manage complex nested promises, but haven't yet had time to revisit this project and implement my new knowledge
 
 - Popup when a Pokemon card is clicked displaying more detailed info in a lightbox
   - functionality is mostly in place, including redux reducers and actions to handle lightbox state

@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import { pokemonList, favorites } from "../actions";
 const {
     FETCH_POKEMON_START,
@@ -20,23 +22,23 @@ export const reducer = (state = initialState, action) => {
                 error: null,
             };
         case FETCH_POKEMON_SUCCESS:
-            const newPokemon = {
-                id: action.payload.id,
-                name: action.payload.name,
-                height: action.payload.height,
-                weight: action.payload.weight,
-                abilities: action.payload.abilities,
-                sprites: action.payload.sprites,
-                game_indices: action.payload.game_indices,
-                stats: action.payload.stats,
-                types: action.payload.types,
-                isFavorite: false,
-            };
             return {
                 ...state,
-                pokemon: state.pokemon
-                    ? [...state.pokemon, newPokemon]
-                    : [newPokemon],
+                pokemon: {
+                    ...state.pokemon,
+                    [action.payload.id]: {
+                        id: action.payload.id,
+                        name: action.payload.name,
+                        height: action.payload.height,
+                        weight: action.payload.weight,
+                        abilities: action.payload.abilities,
+                        sprites: action.payload.sprites,
+                        game_indices: action.payload.game_indices,
+                        stats: action.payload.stats,
+                        types: action.payload.types,
+                        isFavorite: false,
+                    },
+                },
             };
         case FETCH_POKEMON_FAILURE:
             return {
@@ -47,13 +49,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 // pokemon: state.pokemon.filter((x) => x.id !== action.payload.id),
-                pokemon: [
-                    ...state.pokemon.slice(0, action.payload),
-                    ...state.pokemon.slice(
-                        action.payload + 1,
-                        state.pokemon.length
-                    ),
-                ],
+                pokemon: { ..._.omit(state.pokemon, [action.payload]) },
             };
         case SET_URL:
             return {
@@ -63,26 +59,24 @@ export const reducer = (state = initialState, action) => {
         case ADD_FAVORITE:
             return {
                 ...state,
-                pokemon: state.pokemon.map((x) => {
-                    return x.id === action.payload.id
-                        ? {
-                              ...x,
-                              isFavorite: true,
-                          }
-                        : x;
-                }),
+                pokemon: {
+                    ...state.pokemon,
+                    [action.payload.id]: {
+                        ...state.pokemon[action.payload.id],
+                        isFavorite: true,
+                    },
+                },
             };
         case REMOVE_FAVORITE:
             return {
                 ...state,
-                pokemon: state.pokemon.map((x) => {
-                    return x.id === action.payload.id
-                        ? {
-                              ...x,
-                              isFavorite: false,
-                          }
-                        : x;
-                }),
+                pokemon: {
+                    ...state.pokemon,
+                    [action.payload.id]: {
+                        ...state.pokemon[action.payload.id],
+                        isFavorite: false,
+                    },
+                },
             };
         default:
             return state;

@@ -19,19 +19,10 @@ const PokemonCard = (props) => {
         index,
         favorites,
     } = props;
-    const {
-        name,
-        id,
-        height,
-        weight,
-        sprites,
-        abilities,
-        stats,
-        types,
-        isFavorite,
-    } = pokemon;
+    const { name, id, height, weight, sprites, types, isFavorite } = pokemon;
 
     useEffect(() => {
+        // This ensures that the correct state is set for isFavorite
         if (favorites.some((x) => id === x.id)) {
             addFavorite(pokemon);
         }
@@ -56,7 +47,7 @@ const PokemonCard = (props) => {
             <span
                 className="ui close"
                 onClick={() => {
-                    removePokemon(index);
+                    removePokemon(id);
                 }}
             >
                 &times;
@@ -84,9 +75,9 @@ const PokemonCard = (props) => {
                                 />
                             </button>
                         )}
-                        {/* <button onClick={handleClick}>
+                        <button onClick={handleClick}>
                             <img src={require("../../data/icons/popout.png")} />
-                        </button> */}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -106,7 +97,7 @@ const PokemonCard = (props) => {
                                 {types[0].type.name}
                             </Type>
                         </>
-                    ) : (
+                    ) : types.length === 2 ? (
                         <>
                             <Type type={types[0].type.name}>
                                 {types[0].type.name}
@@ -115,6 +106,8 @@ const PokemonCard = (props) => {
                                 {types[1].type.name}
                             </Type>
                         </>
+                    ) : (
+                        <Type type="none">none</Type>
                     )}
                 </h4>
             </div>

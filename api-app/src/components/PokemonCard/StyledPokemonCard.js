@@ -49,6 +49,9 @@ export const StyledCard = styled.div`
         @media screen and (max-width: 800px) {
           max-height: 50px
         }
+        @media screen and (max-width: 650px) {
+          max-height: 40px
+        }
     }
     & > div {
       display: flex;
@@ -59,9 +62,12 @@ export const StyledCard = styled.div`
         color: white;
         font-size: 1.4em;
         @media screen and (max-width: 1000px) {
-          font-size: 1em;
+          font-size: 1.2em;
         }
         @media screen and (max-width: 800px) {
+          font-size: 1em;
+        }
+        @media screen and (max-width: 650px) {
           font-size: .8em;
         }
       }
