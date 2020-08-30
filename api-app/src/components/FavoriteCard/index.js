@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { StyledCard } from "./StyledFavoriteCard";
 
-import { favorites, pokemonList } from "../../store/actions";
+import { favorites } from "../../store/actions";
+import BlankSprite from "../BlankSprite";
 const { removeFavorite } = favorites;
-const { setUrl } = pokemonList;
 
 const FavoriteCard = (props) => {
-    const { favorite, removeFavorite, accent, setUrl } = props;
+    const { favorite, removeFavorite, accent } = props;
     const { name, sprites } = favorite;
     return (
         <StyledCard accent={accent}>
@@ -19,7 +19,11 @@ const FavoriteCard = (props) => {
             >
                 &times;
             </span>
-            <img src={sprites.front_default} alt="" />
+            {sprites.front_default ? (
+                <img src={sprites.front_default} alt="" />
+            ) : (
+                <BlankSprite />
+            )}
             <div>
                 <h3>{name}</h3>
                 {/* <div className="buttons">
@@ -44,6 +48,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { setUrl, removeFavorite })(
-    FavoriteCard
-);
+export default connect(mapStateToProps, { removeFavorite })(FavoriteCard);

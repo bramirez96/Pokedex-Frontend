@@ -9,7 +9,7 @@ const {
 const initialState = {
     poppedOut: false,
     isFetching: false,
-    pokemon: null,
+    id: null,
 };
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -22,7 +22,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
-                pokemon: action.payload,
+                id: action.payload.id,
                 poppedOut: true,
             };
         case SET_POPUP_FAILURE:

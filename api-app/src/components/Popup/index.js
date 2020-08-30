@@ -5,6 +5,7 @@ import { StyledPopup } from "./StyledPopup";
 import { popup, favorites } from "../../store/actions";
 import { Type } from "../Type";
 import { getHeight, getWeight } from "../../utils";
+import BlankSprite from "../BlankSprite";
 
 var statNames = {
     hp: "HP",
@@ -16,16 +17,11 @@ var statNames = {
 };
 
 const Popup = (props) => {
-    const {
-        pokemon,
-        isFavorite,
-        closePopup,
-        addFavorite,
-        removeFavorite,
-    } = props;
+    const { pokemon, closePopup, addFavorite, removeFavorite } = props;
     const {
         name,
         sprites: { front_default },
+        isFavorite,
     } = pokemon;
     const { accent } = props;
 
@@ -48,7 +44,16 @@ const Popup = (props) => {
             <div className="window" onClick={(e) => e.stopPropagation()}>
                 <div className="title">
                     <div>
-                        <img alt="Pokemon Sprite" className="sprite" src={front_default} alt="" />
+                        {front_default ? (
+                            <img
+                                alt="Pokemon Sprite"
+                                className="sprite"
+                                src={front_default}
+                                alt=""
+                            />
+                        ) : (
+                            <BlankSprite />
+                        )}
                     </div>
                     <div className="grow">
                         <h2>
@@ -125,13 +130,9 @@ const Popup = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    const { pokemon } = state.popup;
-    const { accent } = state.settings;
-    const isFavorite = state.pokemonList.pokemon[pokemon.id].isFavorite;
     return {
-        accent,
-        pokemon,
-        isFavorite,
+        accent: state.settings.accent,
+        pokemon: state.pokemonList.pokemon[state.popup.id],
     };
 };
 

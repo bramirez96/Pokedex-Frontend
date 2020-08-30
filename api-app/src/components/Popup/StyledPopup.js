@@ -27,7 +27,7 @@ export const StyledPopup = styled.div`
             display: flex;
             flex-flow: row nowrap;
             color: white;
-            img.sprite {
+            .sprite {
                 background-color: white;
                 border-radius: 12px 0 0 0;
                 border: 1px solid black;
