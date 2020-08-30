@@ -10,7 +10,7 @@ export const StyledFavs = styled.div`
     left: -22%;
     transition: 1s left;
     transition-timing-function: ease-in-out;
-    background-color: #0006;
+    background-color: #0009;
     text-shadow: 0 0 10px black;
 
     overflow: scroll;
@@ -19,10 +19,18 @@ export const StyledFavs = styled.div`
         display: none;
     }
 
+    @media screen and (max-width: 500px) {
+        width: 100%;
+        left: -100%;
+        padding-top: 10px;
+    }
     &.open {
         left: 0;
     }
     h2 {
+        @media screen and (max-width: 500px) {
+            text-align: center;
+        }
         text-align: left;
         color: white;
         font-size: 2rem;

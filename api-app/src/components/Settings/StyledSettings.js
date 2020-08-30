@@ -10,7 +10,7 @@ export const StyledSettings = styled.div`
     right: -22%;
     transition: 1s right;
     transition-timing-function: ease-in-out;
-    background-color: #0006;
+    background-color: #0009;
     color: white;
     text-shadow: 0 0 10px black;
 
@@ -18,6 +18,12 @@ export const StyledSettings = styled.div`
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
         display: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 100%;
+        right: -100%;
+        padding-top: 10px;
     }
 
     &.open {
@@ -29,10 +35,18 @@ export const StyledSettings = styled.div`
         padding: 20px 10%;
         text-decoration: underline;
         text-decoration-color: ${(props) => props.accent};
+        @media screen and (max-width: 500px) {
+            text-align: center;
+        }
     }
     & > div {
         padding: 0 10% 20px;
         text-align: right;
+        
+        @media screen and (max-width: 500px) {
+            text-align: center;
+        }
+        
         h3 {
             margin-bottom: 2vh;
             text-decoration: underline;
