@@ -9,16 +9,26 @@ export const StyledPopup = styled.div`
     z-index: 20;
     background: #0009;
     font-family: "Ubuntu", sans-serif;
+
     .window {
         position: absolute;
         left: 25%;
-        top: 7.5vh;
+        top: 9vh;
         width: 50%;
         background: white;
         border-radius: 15px;
         border: 1px solid black;
         display: flex;
         flex-flow: column nowrap;
+        @media screen and (max-width: 500px) {
+            width: 95%;
+            left: 2.5%;
+            top: 2.5vh;
+        }
+        @media screen and (max-width: 900px) {
+            width: 75%;
+            left: 12.5%;
+        }
         .title {
             position: relative;
             border-radius: 14px 14px 0 0;
