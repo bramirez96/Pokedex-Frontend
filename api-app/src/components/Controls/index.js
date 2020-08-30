@@ -20,16 +20,14 @@ const Controls = (props) => {
     };
     const handleField = (e) => {
         e.preventDefault();
-        console.log("CHANGE", e.target.value);
         setField(e.target.value);
     };
     const handlePage = (e) => {
         e.preventDefault();
         let newPage = e.target.pageInput.value - 1;
-        console.log("SUBMIT", newPage);
         if (
             !isNaN(parseInt(newPage)) &&
-            newPage > 0 &&
+            newPage >= 0 &&
             newPage <= props.maxPage
         ) {
             props.setPage(newPage);

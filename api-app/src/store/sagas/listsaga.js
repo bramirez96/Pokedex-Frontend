@@ -3,6 +3,17 @@ import axios from "axios";
 
 import { APP_LOADED, appLoadSuccess, setCount } from "../actions/pokemonList";
 
+export async function getCount() {
+    try {
+        const {
+            data: { count },
+        } = await axios.get("https://pokeapi.co/api/v2/pokemon");
+        return count;
+    } catch (e) {
+        return 807;
+    }
+}
+
 export async function loadPokeList(count) {
     var url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${count}`;
     try {
@@ -44,17 +55,6 @@ export async function loadPokeDetails(list) {
         }
     }
     return res;
-}
-
-export async function getCount() {
-    try {
-        const {
-            data: { count },
-        } = await axios.get("https://pokeapi.co/api/v2/pokemon");
-        return count;
-    } catch (e) {
-        return 807;
-    }
 }
 
 export function* appStartWatcher() {

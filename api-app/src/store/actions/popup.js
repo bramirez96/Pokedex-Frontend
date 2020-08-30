@@ -7,6 +7,10 @@ export const setPopup = (pokemon) => async (dispatch) => {
     dispatch({ type: SET_POPUP_START });
     // Axios call to get abilities
     // or any other info necessary :)
+    if (pokemon.abilities[0].effect) {
+        dispatch({ type: SET_POPUP_SUCCESS, payload: pokemon });
+        return;
+    }
     try {
         const req = await Promise.all(
             pokemon.abilities.map((x) => {

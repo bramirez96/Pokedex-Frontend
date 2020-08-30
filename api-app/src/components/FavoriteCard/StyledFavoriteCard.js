@@ -21,7 +21,8 @@ export const StyledCard = styled.div`
             text-shadow: 0 0 10px black;
         }
     }
-    img {
+    img,
+    .sprite {
         max-height: 70px;
         margin-right: 10px;
     }

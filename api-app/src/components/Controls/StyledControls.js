@@ -6,7 +6,7 @@ const StyledControls = styled.div`
     justify-content: space-around;
     margin: 0 10% 20px;
     background-color: #0009;
-    padding: 10px 20px;
+    padding: 0 20px;
     border-radius: 100px;
     button {
         font-family: "Ubuntu", sans-serif;
@@ -14,11 +14,13 @@ const StyledControls = styled.div`
         background: none;
         font-size: 1rem;
         cursor: pointer;
+        padding: 10px;
     }
     form {
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
+        padding: 10px;
         input {
             font-family: "Ubuntu", sans-serif;
             color: white;

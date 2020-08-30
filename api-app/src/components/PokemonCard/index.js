@@ -5,19 +5,12 @@ import { Type } from "../Type";
 import { getHeight, getWeight } from "../../utils";
 
 import { popup, favorites, pokemonList } from "../../store/actions";
+import BlankSprite from "../BlankSprite";
 const { setPopup } = popup;
 const { addFavorite, removeFavorite } = favorites;
-const { removePokemon } = pokemonList;
 
 const PokemonCard = (props) => {
-    const {
-        addFavorite,
-        removeFavorite,
-        accent,
-        pokemon,
-        removePokemon,
-        favorites,
-    } = props;
+    const { addFavorite, removeFavorite, accent, pokemon, favorites } = props;
     const { name, id, height, weight, sprites, types, isFavorite } = pokemon;
 
     useEffect(() => {
@@ -44,7 +37,11 @@ const PokemonCard = (props) => {
     return (
         <StyledCard accent={accent}>
             <div className="title">
-                <img src={sprites.front_default} alt="" />
+                {sprites.front_default ? (
+                    <img src={sprites.front_default} alt="" />
+                ) : (
+                    <BlankSprite />
+                )}
                 <div>
                     <h2>
                         {id}. {name}
@@ -121,5 +118,4 @@ export default connect(mapStateToProps, {
     setPopup,
     addFavorite,
     removeFavorite,
-    removePokemon,
 })(PokemonCard);

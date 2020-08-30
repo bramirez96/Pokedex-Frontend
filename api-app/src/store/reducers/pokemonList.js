@@ -1,4 +1,5 @@
 import { pokemonList, favorites } from "../actions";
+import { SET_POPUP_SUCCESS } from "../actions/popup";
 const {
     APP_LOADED,
     APP_LOAD_SUCCESS,
@@ -79,6 +80,16 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 page: action.payload,
+            };
+        case SET_POPUP_SUCCESS:
+            return {
+                ...state,
+                pokemon: {
+                    ...state.pokemon,
+                    [action.payload.id]: {
+                        ...action.payload,
+                    },
+                },
             };
         default:
             return state;
