@@ -20,14 +20,14 @@ export const StyledPopup = styled.div`
         border: 1px solid black;
         display: flex;
         flex-flow: column nowrap;
+        @media screen and (max-width: 900px) {
+            width: 75%;
+            left: 12.5%;
+        }
         @media screen and (max-width: 500px) {
             width: 95%;
             left: 2.5%;
             top: 2.5vh;
-        }
-        @media screen and (max-width: 900px) {
-            width: 75%;
-            left: 12.5%;
         }
         .title {
             position: relative;
@@ -88,6 +88,14 @@ export const StyledPopup = styled.div`
                 flex-flow: row nowrap;
                 align-items: center;
                 margin-bottom: 5px;
+                @media screen and (max-width: 400px) {
+                    flex-flow: column nowrap;
+                    padding: 0 2.5%;
+                    text-align: center;
+                    .name {
+                        margin-bottom: 5px;
+                    }
+                }
                 .name {
                     text-transform: capitalize;
                     font-weight: 700;

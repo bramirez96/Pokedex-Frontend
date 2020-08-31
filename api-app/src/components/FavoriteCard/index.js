@@ -2,23 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { StyledCard } from "./StyledFavoriteCard";
 
-import { favorites } from "../../store/actions";
+import { favorites, popup } from "../../store/actions";
 import BlankSprite from "../BlankSprite";
 const { removeFavorite } = favorites;
 
 const FavoriteCard = (props) => {
-    const { favorite, removeFavorite, accent } = props;
+    const { favorite, removeFavorite, setPopup, accent } = props;
     const { name, sprites } = favorite;
     return (
         <StyledCard accent={accent}>
-            <span
-                className="close"
-                onClick={() => {
-                    removeFavorite(favorite);
-                }}
-            >
-                &times;
-            </span>
             {sprites.front_default ? (
                 <img src={sprites.front_default} alt="" />
             ) : (
@@ -26,15 +18,28 @@ const FavoriteCard = (props) => {
             )}
             <div>
                 <h3>{name}</h3>
-                {/* <div className="buttons">
-          <button
-            onClick={() => {
-              setUrl(name);
-            }}
-          >
-            Open
-          </button>
-        </div> */}
+                <div className="buttons">
+                    <button
+                        onClick={() => {
+                            setPopup(favorite);
+                        }}
+                    >
+                        <img
+                            src={require("../../data/icons/popout.png")}
+                            alt="Open Details"
+                        />
+                    </button>
+                    <button
+                        onClick={() => {
+                            removeFavorite(favorite);
+                        }}
+                    >
+                        <img
+                            src={require("../../data/icons/favon.png")}
+                            alt="Remove Favorite"
+                        />
+                    </button>
+                </div>
             </div>
         </StyledCard>
     );
@@ -48,4 +53,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { removeFavorite })(FavoriteCard);
+export default connect(mapStateToProps, {
+    removeFavorite,
+    setPopup: popup.setPopup,
+})(FavoriteCard);

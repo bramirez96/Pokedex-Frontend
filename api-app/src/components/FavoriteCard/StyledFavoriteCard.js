@@ -9,18 +9,6 @@ export const StyledCard = styled.div`
     margin-bottom: 1.5vh;
     display: flex;
     flex-flow: row nowrap;
-    position: relative;
-    .close {
-        position: absolute;
-        top: 0;
-        right: 6px;
-        font-size: 1.3rem;
-        text-shadow: none;
-        cursor: pointer;
-        &:hover {
-            text-shadow: 0 0 10px black;
-        }
-    }
     img,
     .sprite {
         max-height: 70px;
@@ -35,23 +23,23 @@ export const StyledCard = styled.div`
             font-size: 1.5rem;
             font-weight: 600;
             text-transform: capitalize;
-            margin: 7px 0 3px;
+            margin: 7px 0;
         }
         .buttons {
             display: flex;
             flex-flow: row nowrap;
             justify-content: flex-start;
             button {
-                margin-right: 5px;
-                width: 50%;
+                padding: 5px;
                 text-align: center;
                 font-family: "Ubuntu", sans-serif;
                 color: ${(props) => props.accent};
                 font-weight: 500;
                 text-transform: capitalize;
+                background: none;
                 cursor: pointer;
-                &:hover {
-                    background-color: #aaa;
+                img {
+                    height: 20px;
                 }
             }
         }

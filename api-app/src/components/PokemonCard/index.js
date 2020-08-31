@@ -4,7 +4,7 @@ import { StyledCard } from "./StyledPokemonCard";
 import { Type } from "../Type";
 import { getHeight, getWeight } from "../../utils";
 
-import { popup, favorites, pokemonList } from "../../store/actions";
+import { popup, favorites } from "../../store/actions";
 import BlankSprite from "../BlankSprite";
 const { setPopup } = popup;
 const { addFavorite, removeFavorite } = favorites;
