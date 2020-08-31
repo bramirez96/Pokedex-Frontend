@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const StyledSettings = styled.div`
     z-index: 25;
     font-family: "Ubuntu", sans-serif;
-    width: 22%;
+    width: 40%;
     position: absolute;
     top: 15vh;
     height: 100%;
-    right: -22%;
+    right: -40%;
     transition: 1s right;
     transition-timing-function: ease-in-out;
     background-color: #0009;

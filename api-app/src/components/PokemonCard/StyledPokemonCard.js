@@ -10,14 +10,14 @@ export const StyledCard = styled.div`
     box-shadow: 0 0 10px 3px black;
     font-family: "Ubuntu", sans-serif;
     position: relative;
-    @media screen and (max-width: 500px) {
-        width: 100%;
-    }
 
     @media screen and (max-width: 900px) {
         width: 46%;
     }
 
+    @media screen and (max-width: 500px) {
+        width: 100%;
+    }
     .ui {
         &.close {
             right: 9px;

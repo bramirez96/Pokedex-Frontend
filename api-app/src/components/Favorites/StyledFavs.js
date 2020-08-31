@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const StyledFavs = styled.div`
     z-index: 25;
     font-family: "Ubuntu", sans-serif;
-    width: 22%;
+    width: 50%;
     position: absolute;
     top: 15vh;
-    height: 100%;
-    left: -22%;
+    height: 85vh;
+    left: -50%;
     transition: 1s left;
     transition-timing-function: ease-in-out;
     background-color: #0009;
@@ -19,7 +19,7 @@ export const StyledFavs = styled.div`
         display: none;
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 800px) {
         width: 100%;
         left: -100%;
         padding-top: 10px;
